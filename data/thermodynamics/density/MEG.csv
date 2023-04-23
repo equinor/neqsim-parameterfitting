@@ -1,0 +1,7 @@
+ID,StandardDeviation,Temperature,ComponentName,Density,Pressure,PhaseType,Reference
+40,11,278.15,MEG,1123.77,1.01325,liquid,Egorov
+41,11,288.15,MEG,1116.83,1.01325,liquid,Egorov
+42,11,298.15,MEG,1109.83,1.01325,liquid,Egorov
+43,11,308.15,MEG,1102.81,1.01325,liquid,Egorov
+44,11,323.15,MEG,1092.12,1.01325,liquid,Egorov
+45,11,366,MEG,1084,1.01325,liquid,Egorov
