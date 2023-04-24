@@ -1,5 +1,6 @@
 #Implement the supertrapp method 
 
-def supertrapp(phase):
+def calcviscosity(phase):
     """Implement the supertrapp method for viscosity"""
     return phase.getViscosity('kg/msec')
+
