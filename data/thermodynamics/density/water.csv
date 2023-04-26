@@ -1,0 +1,11 @@
+ID,StandardDeviation,Temperature,ComponentName,Density,Pressure,PhaseType,Reference
+20,10,273.15,water,999.839,1.01325,liquid,Perry1998
+21,10,274.15,water,999.898,1.01325,liquid,Perry1998
+22,10,278.15,water,999.964,1.01325,liquid,Perry1998
+23,10,283.15,water,999.699,1.01325,liquid,Perry1998
+24,10,293.15,water,998.204,1.01325,liquid,Perry1998
+25,10,303.15,water,995.647,1.01325,liquid,Perry1998
+26,10,313.15,water,992.215,1.01325,liquid,Perry1998
+27,10,323.15,water,988.037,1.01325,liquid,Perry1998
+28,10,333.15,water,983.2,1.01325,liquid,Perry1998
+29,10,343.15,water,977.771,1.01325,liquid,Perry1998
