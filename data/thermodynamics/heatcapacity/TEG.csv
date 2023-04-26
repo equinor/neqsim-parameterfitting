@@ -1,0 +1,16 @@
+ID,HeatCapacityCp,ComponentName,Temperature,Pressure,PhaseType,Reference
+1,2.083632,TEG,273.15,1,liquid,Stephens1979
+2,2.163128,TEG,293.15,1,liquid,Stephens1979
+3,2.242624,TEG,313.15,1,liquid,Stephens1979
+4,2.32212,TEG,333.15,1,liquid,Stephens1979
+5,2.401616,TEG,353.15,1,liquid,Stephens1979
+6,2.481112,TEG,373.15,1,liquid,Stephens1979
+7,2.560608,TEG,393.15,1,liquid,Stephens1979
+8,2.640104,TEG,413.15,1,liquid,Stephens1979
+9,2.7196,TEG,433.15,1,liquid,Stephens1979
+10,2.753072,TEG,441.15,1,liquid,Stephens1979
+11,2.769808,TEG,453.15,1,liquid,Stephens1979
+12,2.786544,TEG,473.15,1,liquid,Stephens1979
+13,2.799096,TEG,493.15,1,liquid,Stephens1979
+14,2.815832,TEG,513.15,1,liquid,Stephens1979
+15,2.832568,TEG,533.15,1,liquid,Stephens1979
