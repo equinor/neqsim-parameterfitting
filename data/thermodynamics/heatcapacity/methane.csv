@@ -1,4 +1,4 @@
-ID,"Cp,gas (J/mol*K)",Temperature (K),Reference
+ID,Cp gas(J/mol*K),Temperature (K),Reference
 1,33.51,200,"Gurvich, Veyts, et al., 1989"
 2,35.69,298.15,"Gurvich, Veyts, et al., 1989"
 3,35.76,300,"Gurvich, Veyts, et al., 1989"
