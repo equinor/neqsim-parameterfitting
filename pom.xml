@@ -15,7 +15,11 @@
 
 	<repositories>
 		<repository>
-			<id>local</id>
+			<id>local_windows</id>
+			<url>${env.%userprofile%}\.m2\repository</url>
+		</repository>
+		<repository>
+			<id>local_mac_linux</id>
 			<url>~/.m2/repository</url>
 		</repository>
 	</repositories>
