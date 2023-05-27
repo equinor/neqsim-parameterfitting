@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.equinor.neqsim.parameterfitting</groupId>
+	<artifactId>neqsim-parameterfitting</artifactId>
+	<version>1.0-SNAPSHOT</version>
+
+	<name>neqsim-parameterfitting</name>
+	<!-- FIXME change it to the project's website -->
+	<url>http://github.com/Equinor/neqsim-formatting</url>
+
+	<repositories>
+		<repository>
+			<id>local_windows</id>
+			<url>${env.%userprofile%}\.m2\repository</url>
+		</repository>
+		<repository>
+			<id>local_mac_linux</id>
+			<url>~/.m2/repository</url>
+		</repository>
+	</repositories>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.equinor</groupId>
+			<artifactId>neqsim</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.20.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>5.9.3</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be
+			moved to parent pom) -->
+			<plugins>
+				<!-- clean lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
+				</plugin>
+				<!-- default lifecycle, jar packaging: see
+				https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.10.1</version>
+					<configuration>
+						<release>11</release> <!-- Upgrade jdk version to 11 if you are having issues
+						compiling -->
+						<encoding>${project.build.sourceEncoding}</encoding>
+						<!-- Uncomment below to get compiler warnings 
+						<compilerArgs>
+							<arg>-Xlint</arg>
+						</compilerArgs>
+						<showWarnings>true</showWarnings> 
+						Uncomment above to get compiler warnings -->
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.22.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.0.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+					<version>2.8.2</version>
+				</plugin>
+				<!-- site lifecycle, see
+				https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-project-info-reports-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-install-plugin</artifactId>
+					<version>2.5.1</version>
+					<configuration>
+						<groupId>com.equinor</groupId>
+						<artifactId>neqsim</artifactId>
+						<version>2.5.0</version>
+						<packaging>jar</packaging>
+						<file>${basedir}/resources/neqsim-2.5.0.jar</file>
+						<generatePom>true</generatePom>
+						<!--<pomFile>${basedir}/resources/neqsim-2.5.0.xml</pomFile>-->
+					</configuration>
+					<executions>
+						<execution>
+							<id>install-jar-lib</id>
+							<goals>
+								<goal>install-file</goal>
+							</goals>
+							<phase>validate</phase>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
