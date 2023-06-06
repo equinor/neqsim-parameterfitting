@@ -110,13 +110,12 @@
 					<artifactId>maven-install-plugin</artifactId>
 					<version>2.5.1</version>
 					<configuration>
-						<groupId>com.equinor</groupId>
-						<artifactId>neqsim</artifactId>
-						<version>2.5.0</version>
-						<packaging>jar</packaging>
-						<file>${basedir}/resources/neqsim-2.5.0.jar</file>
-						<generatePom>true</generatePom>
-						<!--<pomFile>${basedir}/resources/neqsim-2.5.0.xml</pomFile>-->
+                        <groupId>com.equinor.neqsim</groupId>
+                        <artifactId>neqsim</artifactId>
+                        <version>2.5.1</version>
+                        <packaging>jar</packaging>
+                        <file>${basedir}/resources/neqsim-2.5.1.jar</file>
+                        <generatePom>true</generatePom>
 					</configuration>
 					<executions>
 						<execution>
