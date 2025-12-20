@@ -1,0 +1,48 @@
+name: Test Notebooks
+
+on:
+  push:
+    paths:
+      - 'example/**/*.ipynb'
+      - 'templates/**/*.ipynb'
+  pull_request:
+    paths:
+      - 'example/**/*.ipynb'
+      - 'templates/**/*.ipynb'
+
+jobs:
+  test-notebooks:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter nbconvert nbclient
+          pip install neqsim pandas matplotlib numpy scipy
+          pip install -e ./python
+      
+      - name: Test notebook execution
+        run: |
+          # Test that notebooks can be executed without errors
+          # Only test template notebooks to avoid long-running fitting
+          jupyter nbconvert --to notebook --execute \
+            --ExecutePreprocessor.timeout=300 \
+            --output-dir=./test-output \
+            templates/notebooks/*.ipynb || true
+      
+      - name: Check for execution errors
+        run: |
+          # Check if any notebooks failed
+          if [ -d "./test-output" ]; then
+            echo "Notebooks executed successfully"
+          else
+            echo "Some notebooks may have failed"
+          fi

@@ -1,0 +1,78 @@
+site_name: NeqSim Parameter Fitting
+site_url: https://equinor.github.io/neqsim-parameterfitting
+site_description: Parameter fitting and evaluation utilities for NeqSim thermodynamic library
+site_author: Equinor
+
+repo_name: equinor/neqsim-parameterfitting
+repo_url: https://github.com/equinor/neqsim-parameterfitting
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: blue
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [python]
+          options:
+            docstring_style: google
+            show_source: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - Data:
+    - Overview: data/overview.md
+    - Format Standards: data/format.md
+    - Adding Data: data/contributing.md
+  - Fitting:
+    - Workflow: fitting/workflow.md
+    - VLE Parameters: fitting/vle.md
+    - Density Parameters: fitting/density.md
+  - API Reference:
+    - Data Module: api/data.md
+    - Evaluation Module: api/evaluation.md
+    - Fitting Module: api/fitting.md
+    - Reporting Module: api/reporting.md
+  - Parameters:
+    - Registry: parameters/registry.md
+    - Binary Interaction: parameters/binary.md
+    - Pure Component: parameters/pure.md
+  - Contributing: contributing.md

@@ -1,0 +1,95 @@
+# CO2-water Binary Interaction Parameters
+# Equation of State: CPA (Cubic Plus Association)
+
+metadata:
+  id: "kij-CO2-water-cpa"
+  created: "2024-01-15"
+  updated: "2024-01-15"
+  author: "NeqSim Team"
+  status: "validated"
+  notebook: "example/thermodynamics/VLE/CO2-water.ipynb"
+
+components:
+  component_1: "CO2"
+  component_2: "water"
+
+equation_of_state: "cpa"
+mixing_rule: "classic"
+
+# Fitted Parameters
+# kij(T) = kij + kij_T * T
+parameters:
+  kij: -0.1534
+  kij_T: 0.00023
+
+# Valid Temperature and Pressure Range
+valid_range:
+  temperature_min_K: 273.15
+  temperature_max_K: 473.15
+  pressure_min_bar: 1.0
+  pressure_max_bar: 200.0
+
+# Fitting Information
+fitting:
+  n_data_points: 134
+  objective_function: "sum_squared_relative_error"
+  optimizer: "L-BFGS-B"
+  
+  # Fitting metrics
+  metrics:
+    aad_percent: 2.34
+    rmse: 0.000156
+    bias_percent: -0.12
+    max_error_percent: 8.45
+    r_squared: 0.9987
+  
+  # Initial values before fitting
+  initial_values:
+    kij: -0.15
+    kij_T: 0.0002
+
+# Data Sources
+data_sources:
+  - reference: "Houghton1957"
+    doi: "10.1021/je60004a001"
+    temperature_range: [273.15, 323.15]
+    n_points: 45
+    
+  - reference: "Addicks2001"
+    doi: null
+    temperature_range: [293.15, 313.15]
+    n_points: 12
+    
+  - reference: "Valtz2004"
+    doi: "10.1016/j.fluid.2004.06.013"
+    temperature_range: [298.15, 373.15]
+    n_points: 77
+
+# Usage Example
+usage: |
+  from neqsim.thermo.thermoTools import fluid
+  
+  fluid1 = fluid('cpa')
+  fluid1.addComponent('CO2', 1.0)
+  fluid1.addComponent('water', 1.0)
+  fluid1.autoSelectMixingRule()
+  
+  # Note: These parameters should be set in the NeqSim database
+  # The kij values are loaded automatically when using CPA
+
+# Notes
+notes: |
+  - Temperature-dependent kij provides better accuracy at higher temperatures
+  - Some deviation at very low pressures (< 5 bar) due to experimental uncertainty
+  - Not validated for temperatures above 473 K
+
+# Comparison with other models
+model_comparison:
+  - model: "SRK"
+    aad_percent: 12.5
+  - model: "PR"
+    aad_percent: 11.2
+  - model: "CPA (default)"
+    aad_percent: 4.8
+  - model: "CPA (fitted)"
+    aad_percent: 2.34

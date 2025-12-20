@@ -1,0 +1,64 @@
+# NeqSim Fitted Parameter Registry
+# 
+# This file serves as an index of all fitted parameters in this repository.
+# Each entry references a detailed parameter file in the fitted/ subdirectory.
+#
+# Version: 1.0.0
+# Last Updated: 2024-01-01
+
+metadata:
+  description: "Registry of fitted thermodynamic parameters for NeqSim"
+  maintainer: "Equinor"
+  repository: "https://github.com/equinor/neqsim-parameterfitting"
+
+# Binary Interaction Parameters
+binary_interaction_parameters:
+  - id: "kij-CO2-water-cpa"
+    file: "fitted/binary-interaction/CO2-water.yaml"
+    components: ["CO2", "water"]
+    equation_of_state: "cpa"
+    property_type: "VLE"
+    status: "validated"
+    
+  - id: "kij-methane-water-cpa"
+    file: "fitted/binary-interaction/methane-water.yaml"
+    components: ["methane", "water"]
+    equation_of_state: "cpa"
+    property_type: "VLE"
+    status: "draft"
+
+  - id: "kij-nitrogen-water-cpa"
+    file: "fitted/binary-interaction/nitrogen-water.yaml"
+    components: ["nitrogen", "water"]
+    equation_of_state: "cpa"
+    property_type: "VLE"
+    status: "draft"
+
+  - id: "kij-hydrogen-methane-srk"
+    file: "fitted/binary-interaction/hydrogen-methane.yaml"
+    components: ["hydrogen", "methane"]
+    equation_of_state: "srk"
+    property_type: "VLE"
+    status: "draft"
+
+# Pure Component Parameters
+pure_component_parameters:
+  - id: "cp-hydrogen-srk"
+    file: "fitted/pure-component/hydrogen-cp.yaml"
+    component: "hydrogen"
+    equation_of_state: "srk"
+    property_type: "heat_capacity"
+    status: "draft"
+
+  - id: "cp-methane-srk"
+    file: "fitted/pure-component/methane-cp.yaml"
+    component: "methane"
+    equation_of_state: "srk"
+    property_type: "heat_capacity"
+    status: "draft"
+
+# Status definitions:
+# - draft: Initial fitting, needs review
+# - validated: Reviewed and validated against additional data
+# - production: Approved for use in main NeqSim database
+# - deprecated: Superseded by newer fitting

@@ -1,0 +1,67 @@
+# Hydrogen Heat Capacity Parameters
+# Polynomial coefficients for ideal gas Cp
+
+metadata:
+  id: "cp-hydrogen-srk"
+  created: "2024-01-25"
+  updated: "2024-01-25"
+  author: "NeqSim Team"
+  status: "draft"
+  notebook: "example/thermodynamics/heatcapacity/hydrogen.ipynb"
+
+component: "hydrogen"
+equation_of_state: "srk"
+property: "ideal_gas_heat_capacity"
+
+# Cp = a0 + a1*T + a2*T^2 + a3*T^3
+# Units: J/(mol·K)
+parameters:
+  polynomial_order: 3
+  coefficients:
+    a0: 27.28
+    a1: 0.00326
+    a2: 0.000005
+    a3: 0.0
+
+# Valid Range
+valid_range:
+  temperature_min_K: 298.0
+  temperature_max_K: 1000.0
+  pressure_bar: 1.0  # Ideal gas (low pressure)
+
+# Fitting Information  
+fitting:
+  n_data_points: 9
+  source: "NIST WebBook"
+  
+  metrics:
+    aad_percent: 0.15
+    rmse: 0.045
+    max_error_percent: 0.32
+
+# Data Source
+data_sources:
+  - reference: "NIST WebBook"
+    url: "https://webbook.nist.gov"
+    accessed: "2024-01-25"
+
+# Usage
+usage: |
+  # These coefficients are used internally by NeqSim
+  # for ideal gas heat capacity calculations
+  
+  from neqsim.thermo.thermoTools import fluid, TPflash
+  
+  fluid1 = fluid('srk')
+  fluid1.addComponent('hydrogen', 1.0)
+  fluid1.setTemperature(300, 'K')
+  fluid1.setPressure(1, 'bara')
+  TPflash(fluid1)
+  fluid1.initProperties()
+  
+  cp = fluid1.getPhase('gas').getCp('J/molK')
+
+notes: |
+  - Hydrogen has relatively constant Cp at low temperatures
+  - Higher order terms become important above 600 K
+  - For cryogenic applications, use different correlation

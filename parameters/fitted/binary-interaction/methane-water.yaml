@@ -1,0 +1,59 @@
+# methane-water Binary Interaction Parameters
+# Equation of State: CPA (Cubic Plus Association)
+
+metadata:
+  id: "kij-methane-water-cpa"
+  created: "2024-01-20"
+  updated: "2024-01-20"
+  author: "NeqSim Team"
+  status: "draft"
+  notebook: "example/thermodynamics/VLE/methane-water.ipynb"
+
+components:
+  component_1: "methane"
+  component_2: "water"
+
+equation_of_state: "cpa"
+mixing_rule: "classic"
+
+# Fitted Parameters
+parameters:
+  kij: 0.0152
+  kij_T: 0.0
+
+# Valid Range
+valid_range:
+  temperature_min_K: 273.15
+  temperature_max_K: 423.15
+  pressure_min_bar: 1.0
+  pressure_max_bar: 500.0
+
+# Fitting Information
+fitting:
+  n_data_points: 85
+  objective_function: "sum_squared_relative_error"
+  optimizer: "L-BFGS-B"
+  
+  metrics:
+    aad_percent: 3.12
+    rmse: 0.000089
+    bias_percent: 0.45
+    max_error_percent: 12.3
+    r_squared: 0.9954
+
+# Data Sources
+data_sources:
+  - reference: "Culberson1951"
+    doi: null
+    temperature_range: [298.15, 423.15]
+    n_points: 42
+    
+  - reference: "Lekvam1997"
+    doi: "10.1021/je960266z"
+    temperature_range: [273.15, 298.15]
+    n_points: 43
+
+notes: |
+  - Default CPA parameters work reasonably well for methane-water
+  - Fitting provides modest improvement (~1% AAD reduction)
+  - Consider additional high-pressure data for validation

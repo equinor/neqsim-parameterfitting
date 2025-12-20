@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/equinor/neqsim-parameterfitting/schemas/vle-schema.json",
+  "title": "VLE Experimental Data Schema",
+  "description": "Schema for vapor-liquid equilibrium experimental data files",
+  "type": "object",
+  "properties": {
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "type": { "type": "string", "enum": ["integer", "float", "string"] },
+          "required": { "type": "boolean" },
+          "unit": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required_columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "required": true,
+      "description": "Unique row identifier"
+    },
+    {
+      "name": "component_1",
+      "type": "string",
+      "required": true,
+      "description": "Primary component name (solute)"
+    },
+    {
+      "name": "component_2",
+      "type": "string",
+      "required": true,
+      "description": "Secondary component name (solvent)"
+    },
+    {
+      "name": "temperature_K",
+      "type": "float",
+      "required": true,
+      "unit": "K",
+      "description": "Temperature in Kelvin"
+    },
+    {
+      "name": "pressure_bar",
+      "type": "float",
+      "required": true,
+      "unit": "bar",
+      "description": "Pressure in bar"
+    },
+    {
+      "name": "reference",
+      "type": "string",
+      "required": true,
+      "description": "Literature reference"
+    }
+  ],
+  "optional_columns": [
+    {
+      "name": "x1",
+      "type": "float",
+      "required": false,
+      "unit": "mol/mol",
+      "description": "Liquid mole fraction of component 1"
+    },
+    {
+      "name": "y1",
+      "type": "float",
+      "required": false,
+      "unit": "mol/mol",
+      "description": "Vapor mole fraction of component 1"
+    },
+    {
+      "name": "x2",
+      "type": "float",
+      "required": false,
+      "unit": "mol/mol",
+      "description": "Liquid mole fraction of component 2"
+    },
+    {
+      "name": "y2",
+      "type": "float",
+      "required": false,
+      "unit": "mol/mol",
+      "description": "Vapor mole fraction of component 2"
+    },
+    {
+      "name": "uncertainty",
+      "type": "float",
+      "required": false,
+      "description": "Absolute uncertainty of the measured value"
+    },
+    {
+      "name": "uncertainty_percent",
+      "type": "float",
+      "required": false,
+      "unit": "%",
+      "description": "Relative uncertainty percentage"
+    },
+    {
+      "name": "quality_flag",
+      "type": "string",
+      "required": false,
+      "enum": ["A", "B", "C"],
+      "description": "Data quality rating"
+    },
+    {
+      "name": "doi",
+      "type": "string",
+      "required": false,
+      "description": "DOI of source publication"
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "required": false,
+      "description": "Additional notes or comments"
+    }
+  ],
+  "validation_rules": {
+    "temperature_K": {
+      "minimum": 0,
+      "maximum": 2000,
+      "description": "Temperature must be positive and below 2000 K"
+    },
+    "pressure_bar": {
+      "minimum": 0,
+      "maximum": 10000,
+      "description": "Pressure must be positive and below 10000 bar"
+    },
+    "x1": {
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Mole fraction must be between 0 and 1"
+    },
+    "y1": {
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Mole fraction must be between 0 and 1"
+    }
+  }
+}

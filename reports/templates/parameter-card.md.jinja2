@@ -1,0 +1,32 @@
+# Parameter Summary: {{ component_1 }}{% if component_2 %}-{{ component_2 }}{% endif %}
+
+## {{ equation_of_state | upper }} Parameters
+
+**Status:** {{ status }}  
+**Last Updated:** {{ updated }}
+
+### Parameters
+
+{% for name, value in parameters.items() %}
+- **{{ name }}:** {{ "%.6g" | format(value) }}
+{% endfor %}
+
+### Valid Range
+
+- **Temperature:** {{ valid_range.temperature_min_K }} - {{ valid_range.temperature_max_K }} K
+- **Pressure:** {{ valid_range.pressure_min_bar | default(0) }} - {{ valid_range.pressure_max_bar }} bar
+
+### Performance
+
+- **AAD%:** {{ "%.2f" | format(metrics.aad_percent) }}%
+- **Data Points:** {{ fitting.n_data_points }}
+
+### References
+
+{% for source in data_sources %}
+- {{ source.reference }}{% if source.doi %} (DOI: {{ source.doi }}){% endif %}
+{% endfor %}
+
+---
+
+*Source: [{{ file }}]({{ file }})*

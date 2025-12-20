@@ -1,0 +1,137 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/equinor/neqsim-parameterfitting/schemas/viscosity-schema.json",
+  "title": "Viscosity Experimental Data Schema",
+  "description": "Schema for viscosity experimental data files",
+  "type": "object",
+  "required_columns": [
+    {
+      "name": "id",
+      "type": "integer",
+      "required": true,
+      "description": "Unique row identifier"
+    },
+    {
+      "name": "component_1",
+      "type": "string",
+      "required": true,
+      "description": "Primary component name"
+    },
+    {
+      "name": "temperature_K",
+      "type": "float",
+      "required": true,
+      "unit": "K",
+      "description": "Temperature in Kelvin"
+    },
+    {
+      "name": "pressure_bar",
+      "type": "float",
+      "required": true,
+      "unit": "bar",
+      "description": "Pressure in bar"
+    },
+    {
+      "name": "reference",
+      "type": "string",
+      "required": true,
+      "description": "Literature reference"
+    }
+  ],
+  "value_columns_one_required": [
+    {
+      "name": "viscosity_Pa_s",
+      "type": "float",
+      "unit": "Pa·s",
+      "description": "Dynamic viscosity in Pascal-seconds"
+    },
+    {
+      "name": "viscosity_cP",
+      "type": "float",
+      "unit": "cP",
+      "description": "Dynamic viscosity in centipoise"
+    },
+    {
+      "name": "kinematic_viscosity_m2_s",
+      "type": "float",
+      "unit": "m²/s",
+      "description": "Kinematic viscosity"
+    }
+  ],
+  "optional_columns": [
+    {
+      "name": "component_2",
+      "type": "string",
+      "required": false,
+      "description": "Secondary component for mixtures"
+    },
+    {
+      "name": "x1",
+      "type": "float",
+      "required": false,
+      "unit": "mol/mol",
+      "description": "Mole fraction of component 1"
+    },
+    {
+      "name": "uncertainty",
+      "type": "float",
+      "required": false,
+      "description": "Absolute uncertainty"
+    },
+    {
+      "name": "uncertainty_percent",
+      "type": "float",
+      "required": false,
+      "unit": "%",
+      "description": "Relative uncertainty percentage"
+    },
+    {
+      "name": "phase",
+      "type": "string",
+      "required": false,
+      "enum": ["liquid", "vapor", "gas", "supercritical"],
+      "description": "Phase of the measurement"
+    },
+    {
+      "name": "quality_flag",
+      "type": "string",
+      "required": false,
+      "enum": ["A", "B", "C"],
+      "description": "Data quality rating"
+    },
+    {
+      "name": "doi",
+      "type": "string",
+      "required": false,
+      "description": "DOI of source publication"
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "required": false,
+      "description": "Additional notes"
+    }
+  ],
+  "validation_rules": {
+    "temperature_K": {
+      "minimum": 0,
+      "maximum": 2000
+    },
+    "pressure_bar": {
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "viscosity_Pa_s": {
+      "minimum": 0,
+      "maximum": 1000
+    },
+    "viscosity_cP": {
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "x1": {
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}
